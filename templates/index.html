@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gerador de Códigos</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Gerador de Códigos</h1>
+            <form method="POST">
+                <label for="descricao">Descreva o que você deseja gerar:</label>
+                <textarea id="descricao" name="descricao" rows="4" placeholder="Exemplo: Função para somar números"></textarea>
+
+                <label for="linguagem">Escolha a linguagem:</label>
+                <select name="linguagem" id="linguagem">
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="c">C</option>
+                    <option value="c++">C++</option>
+                    <option value="php">PHP</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="sql">SQL</option>
+                    <option value="bash">Bash</option>
+                    <option value="ruby">Ruby</option>
+                    <option value="swift">Swift</option>
+                    <option value="kotlin">Kotlin</option>
+                    <option value="typescript">TypeScript</option>
+                    <option value="go">Go</option>
+                    <option value="rust">Rust</option>
+                    <option value="scala">Scala</option>
+                    <option value="r">R</option>
+                    <option value="julia">Julia</option>
+                    <option value="perl">Perl</option>
+                    <option value="lua">Lua</option>
+                    <option value="matlab">Matlab</option>
+                    <option value="octave">Octave</option>
+                    <option value="prolog">Prolog</option>
+                    <option value="ada">Ada</option>
+                    <option value="pascal">Pascal</option>
+                    <option value="f#">F#</option>
+                    <option value="visualbasic">Visual Basic</option>
+                    <option value="objectivec">Objective-C</option>
+                    <option value="vba">VBA</option>
+                    <option value="abap">ABAP</option>
+                    <option value="delphi">Delphi</option>
+                    <option value="powershell">PowerShell</option>
+                    <option value="cobol">COBOL</option>
+                    <option value="falcon">Falcon</option>
+                </select>
+
+                <button type="submit" id="submitBtn">Gerar Código</button>
+                <button type="reset" class="clear">Limpar</button>
+            </form>
+
+            {% if codigo %}
+                <div class="result">
+                    <h2>Código Gerado:</h2>
+                    <pre>{{codigo}}</pre>
+                </div>
+            {% endif %}
+        </div>
+    </body>
+</html>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background-color: #1e1e1e;
+        border-radius: 10px;
+        padding: 30px;
+        width: 90%;
+        max-width: 600px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+        text-align: center;
+        color: #00e676;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+    }
+
+    textarea, select, button {
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #333;
+        background-color: #282828;
+        color: #e0e0e0;
+        font-size: 1em;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        background-color: #00e676;
+        color: #121212;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2em;
+        transition: background-color 0.3s;
+    }
+    button:active {
+        transform: scale(0.98);
+    }
+
+    button:hover {
+        background-color: #00b248;
+    }
+
+    .clear {
+        background-color: #f44336;
+        color: #121212;
+    }
+    .clear:hover {
+        background-color: #c21a00;
+    }
+
+    .result {
+        margin-top: 20px;
+    }
+
+    pre {
+        background-color: #2c2c2c;
+        color: #e0e0e0;
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid #444;
+        word-wrap: break-word;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+    }
+</style>
+
+<script>
+    document.querySelector('.clear').addEventListener('click', () => {
+        document.querySelector('form').reset();
+    });
+
+    document.querySelector('form').addEventListener('submit', function() {
+        document.querySelector('#submitBtn').disabled = true;
+        document.querySelector('#submitBtn').innerText = 'Aguarde...';
+    });
+</script>
